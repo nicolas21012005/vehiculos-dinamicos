@@ -92,9 +92,13 @@ h4 {
 
 /* INFO DE LA TARJETA */
 .card-body .card-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #e63946;
+    font-size: 1rem;
+    color: #e6b800;
+}
+
+.card-body .card-km {
+    font-size: 1rem;
+    color: #5dade2;
 }
 
 .card-body .card-subtitle {

@@ -30,23 +30,23 @@ function createNewVehicle(foto, nombre, marca, modelo, kilometraje, precio) {
     // creamos el h4 que contiene el nombre del vehiculo
     const nameVehicle = document.createElement('h3');
     nameVehicle.classList.add('card-title');
-    nameVehicle.textContent = nombre
+    nameVehicle.textContent = 'Nombre: ' + nombre
     // creamos el campo para la marca del vehiculo
     const brandVehicle = document.createElement('h4');
     brandVehicle.classList.add('card-subtitle', 'mb-2');
-    brandVehicle.textContent = marca
+    brandVehicle.textContent = 'Marca: ' + marca
     // creamos el campo para el modelo del vehiculo
     const modelVehicle = document.createElement('h4');
     modelVehicle.classList.add('card-text');
-    modelVehicle.textContent = modelo
+    modelVehicle.textContent = 'Modelo: ' + modelo
     // creamos el campo para el kilometraje del vehiculo
     const kmVehicle = document.createElement('h4');
-    kmVehicle.classList.add('card-title');
-    kmVehicle.textContent = kilometraje
+    kmVehicle.classList.add('card-km');
+    kmVehicle.textContent = 'Recorrido: ' + kilometraje + ' km'
     // creamos el campo para el precio del vehiculo
     const priceVehicle = document.createElement('h4');
     priceVehicle.classList.add('text-success');
-    priceVehicle.textContent = precio
+    priceVehicle.textContent = 'Precio: $' + precio
     // creamos el contenedor de los dos botones, comprar y eliminar
     const containerButtons = document.createElement('div');
     containerButtons.classList.add('d-flex', 'justify-content-between', 'mt-3')
