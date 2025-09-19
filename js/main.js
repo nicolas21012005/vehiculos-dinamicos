@@ -33,7 +33,7 @@ function createNewVehicle(foto, nombre, marca, modelo, kilometraje, precio) {
     nameVehicle.textContent = nombre
     // creamos el campo para la marca del vehiculo
     const brandVehicle = document.createElement('h4');
-    brandVehicle.classList.add('card-subtitle', 'text-muted');
+    brandVehicle.classList.add('card-subtitle', 'mb-2');
     brandVehicle.textContent = marca
     // creamos el campo para el modelo del vehiculo
     const modelVehicle = document.createElement('h4');
@@ -61,8 +61,6 @@ function createNewVehicle(foto, nombre, marca, modelo, kilometraje, precio) {
     buttonDeleteCard.id = 'button_delete'
     buttonDeleteCard.textContent = 'Eliminar';
 
-
-
     containerTarget.appendChild(bodyCard)
     bodyCard.appendChild(img)
     bodyCard.appendChild(carInfo)
@@ -81,7 +79,7 @@ function createNewVehicle(foto, nombre, marca, modelo, kilometraje, precio) {
 
 form.addEventListener('submit', (m) => {
     m.preventDefault()
-    const foto = inputFoto.value.trim();
+    let foto = inputFoto.value.trim();
     const nombre = inputNombre.value.trim();
     const marca = inputMarca.value.trim();
     const modelo = inputModelo.value.trim();
@@ -91,8 +89,8 @@ form.addEventListener('submit', (m) => {
     if (!nombre || !marca || !modelo || !kilometraje || !precio) {
         alert('Todos los campos son obligatorios');
     } else {
-        if (!foto) {
-            foto.
+        if (foto === '') {
+            foto = 'https://www.edmunds.com/assets/m/cs/cms/a53563e2-a6f9-41d1-94d5-802bea0eba41/2026+Lamborghini+Temerario+5_1280.jpg'
         }
         const newVehicle = createNewVehicle(foto, nombre, marca, modelo, kilometraje, precio)
         containerCards.appendChild(newVehicle)
@@ -109,7 +107,7 @@ function eventsToCard(containerTarget) {
         containerTarget.remove()
     })
     buttonBuy.addEventListener('click', () => {
-        alert("has comprado el carro")
+        alert('Has comprado el vehiculo')
         containerTarget.remove()
     })
 }
