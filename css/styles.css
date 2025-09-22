@@ -31,6 +31,10 @@ h4 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
+section {
+    position: relative;
+}
+
 #form label {
     font-weight: 600;
     color: #d32f2f;
@@ -147,4 +151,99 @@ h4 {
 #button_delete:hover {
     background: #7f1114;
     box-shadow: 0 4px 10px rgba(185, 28, 28, 0.3);
+}
+
+
+#containerBtnCar {
+    display: flex;
+    position: relative;
+    justify-content: end;
+}
+
+.classContainerBtnCar {
+    margin-right: 500px;
+
+}
+
+#counter {
+    background-color: red;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    right: -8px;
+    bottom: 15px;
+    border-radius: 50%;
+}
+
+#side-bar {
+    display: none;
+}
+
+#side-bar #cont_products {
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 85%;
+    max-height: 80%;
+}
+
+.active {
+    position: absolute;
+    top: -24px;
+    right: -102px;
+    width: 550px;
+    background-color: #373737;
+    z-index: 99;
+    padding: 40px;
+    height: 100vh;
+}
+
+.targetProduct {
+    display: flex;
+    width: 450px;
+    height: 170px;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(185, 28, 28, 0.3);
+    background-color: #161616;
+    padding: 0;
+    margin: 10px 0 10px 0;
+}
+
+.targetProduct .container-img {
+    padding: 0 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.targetProduct .container-img img {
+    object-fit: cover;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px 0 0 25px;
+}
+
+.targetProduct .text-success {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #22c55e;
+}
+
+.targetProduct .card-title {
+    font-size: 1rem;
+    color: #e6b800;
+}
+
+.targetProduct .card-subtitle {
+    font-size: 1rem;
+    color: #a26a3a;
+}
+
+.targetProduct .card-km {
+    font-size: 1rem;
+    color: #5dade2;
+}
+
+.targetProduct .carInfoProduct {
+    padding: 10px;
 }

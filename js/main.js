@@ -12,6 +12,14 @@ const inputMarca = document.getElementById('marca');
 const inputModelo = document.getElementById('modelo');
 const inputKilometraje = document.getElementById('kilometraje');
 const inputPrecio = document.getElementById('precio');
+const buttonCarProduct = document.getElementById('btn_products');
+const side_bar = document.getElementById('side-bar')
+const containerBtnCar = document.getElementById('containerBtnCar');
+const countProducts = document.getElementById('car-count');
+const contProducts = document.getElementById('cont_products');
+const totalPriceContainer = document.getElementById('containerTotalPrice');
+const totalPrice = document.getElementById('totalPrice')
+let total = 0
 
 
 function createNewVehicle(foto, nombre, marca, modelo, kilometraje, precio) {
@@ -74,7 +82,6 @@ function createNewVehicle(foto, nombre, marca, modelo, kilometraje, precio) {
     containerButtons.appendChild(buttonDeleteCard)
 
     return containerTarget;
-
 }
 
 form.addEventListener('submit', (m) => {
@@ -107,7 +114,84 @@ function eventsToCard(containerTarget) {
         containerTarget.remove()
     })
     buttonBuy.addEventListener('click', () => {
-        alert('Has comprado el vehiculo')
-        containerTarget.remove()
+
+        const foto = containerTarget.querySelector('img').src;
+        const nombre = containerTarget.querySelector('.card-title').textContent.replace('Nombre: ', '');
+        const marca = containerTarget.querySelector('.card-subtitle').textContent.replace('Marca: ', '');
+        const kilometraje = containerTarget.querySelector('.card-km').textContent.replace('Recorrido: ', '').replace(' km', '');
+        const precio = containerTarget.querySelector('.text-success').textContent.replace('Precio: $', '');
+
+        const cartItem = addProduct(foto, nombre, marca, kilometraje, precio)
+        contProducts.appendChild(cartItem)
+        countProducts.textContent = parseInt(countProducts.textContent) + 1;
+
+
+        total += parseInt(precio)
+        totalPrice.textContent = total
+        // for (let i = precio; i <= countProducts; i++) {
+        //     i + precio
+        // }
     })
 }
+function addProduct(foto, nombre, marca, kilometraje, precio) {
+    // traigo la informacion que necesito de otra funcion con el valor devuelto de la misma
+    const newVehicleProduct = createNewVehicle(foto, nombre, marca, kilometraje, precio)
+
+    // creo la tarjeta que va a tener los datos de cada vehiculo a comprar
+    const containerTarget = document.createElement('div');
+    containerTarget.classList.add('targetProduct');
+    // creo la etiqueta img
+    const img = document.createElement('img');
+    img.src = foto;
+    // creo el espacio para las imagenes
+    const containerImg = document.createElement('div');
+    containerImg.classList.add('col-md-5', 'container-img')
+    containerImg.appendChild(img)
+
+    // creo el espacio para la informacion del vehiculo
+    const containerInfoVehicle = document.createElement('div')
+    containerInfoVehicle.classList.add('col-md-7', 'carInfoProduct');
+
+    // creo el espacio para mostrar el nombre del vehiculo
+    const nameVehicleProduct = document.createElement('h4')
+    nameVehicleProduct.classList.add('card-title');
+    nameVehicleProduct.textContent = 'Vehiculo: ' + nombre
+    // creo el espacio para mostrar la marca del vehiculo
+    const brandVehicleProduct = document.createElement('h4');
+    brandVehicleProduct.classList.add('card-subtitle', 'mb-2')
+    brandVehicleProduct.textContent = 'Marca: ' + marca
+    // creo el espacio para mostrar el kilometraje del vehiculo
+    const mileageCarProduct = document.createElement('h4');
+    mileageCarProduct.classList.add('card-km');
+    mileageCarProduct.textContent = 'Recorrido: ' + kilometraje + ' km';
+    // creo el espacio para mostrar el precio del vehiculo
+    const priceVehicleProduct = document.createElement('h4');
+    priceVehicleProduct.classList.add('text-success');
+    priceVehicleProduct.textContent = 'Precio: $' + precio
+    // creo el boton para eliminar la tarjeta
+    const buttonDeleteCard = document.createElement('button');
+    buttonDeleteCard.classList.add('btn', 'btn-danger')
+    buttonDeleteCard.id = 'button_delete'
+    buttonDeleteCard.textContent = 'Eliminar';
+    buttonDeleteCard.addEventListener('click', () => {
+        containerTarget.remove()
+        countProducts.textContent = parseInt(countProducts.textContent) - 1
+        total -= parseInt(precio)
+        totalPrice.textContent = total
+    })
+    containerInfoVehicle.appendChild(nameVehicleProduct)
+    containerInfoVehicle.appendChild(brandVehicleProduct)
+    containerInfoVehicle.appendChild(mileageCarProduct)
+    containerInfoVehicle.appendChild(priceVehicleProduct)
+    containerInfoVehicle.appendChild(buttonDeleteCard)
+    containerTarget.appendChild(containerImg)
+    containerTarget.appendChild(containerInfoVehicle)
+
+    return containerTarget;
+}
+
+buttonCarProduct.addEventListener('click', () => {
+    side_bar.classList.toggle('active');
+    side_bar.style.display = 'block';
+    containerBtnCar.classList.toggle('classContainerBtnCar');
+})
