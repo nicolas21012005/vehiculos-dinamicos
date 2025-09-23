@@ -192,6 +192,5 @@ function addProduct(foto, nombre, marca, kilometraje, precio) {
 
 buttonCarProduct.addEventListener('click', () => {
     side_bar.classList.toggle('active');
-    side_bar.style.display = 'block';
     containerBtnCar.classList.toggle('classContainerBtnCar');
 })

@@ -187,7 +187,8 @@ section {
     max-height: 80%;
 }
 
-.active {
+#side-bar.active {
+    display: block;
     position: absolute;
     top: -24px;
     right: -102px;
@@ -196,6 +197,7 @@ section {
     z-index: 99;
     padding: 40px;
     height: 100vh;
+
 }
 
 .targetProduct {
